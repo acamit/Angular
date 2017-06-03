@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form clas="form">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <div name="firstName" id="firstName" class="well"> {{ serviceRequest.firstName }} </div>
+      </div>
+      <div class="from-group">
+        <label for="lastName">Last Name</label>
+        <div name="lastName" id="lastName" class="well"> {{ serviceRequest.lastName }} </div>
+      </div>
+      <div class="from-group">
+        <label for="vehicleRegNumber">Vehicle Registration Number</label>
+        <div name="vehicleRegNumber" id="vehicleRegNumber" class="well"> {{ serviceRequest.vehicleRegNumber }} </div>
+
+      </div>
+      <div class="from-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <div name="mobileNumber" id="mobileNumber" class="well"> {{ serviceRequest.mobileNumber }} </div>
+
+      </div>
+      <div class="from-group">
+        <label for="address">Address</label>
+        <div name="address" id="address" class="well well-lg"> {{ serviceRequest.address }} </div>
+
+      </div>
+      <div class="from-group">
+        <label for="pickupDate">Pickup Date</label>
+        <div name="pickupDate" id="pickupDate" class="well"> {{ serviceRequest.pickupDate }} </div>
+
+      </div>
+      <div class="from-group">
+        <label for="returnDate">Return Date</label>
+        <div name="returnDate" id="returnDate" class="well"> {{ serviceRequest.returnDate }} </div>
+
+      </div>
+
+    </form>
+    <a [routerLink]="['/requests']" class="btn btn-primary">Back</a>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+<br/>
+<br/>

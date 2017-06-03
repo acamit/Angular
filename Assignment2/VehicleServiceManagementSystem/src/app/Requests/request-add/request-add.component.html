@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form class="form" #requestAddForm="ngForm" name="requestAddForm" (submit)="addNewRequest(requestAddForm)">
+      <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
+        <label class="control-label" for="firstName">First Name</label>
+        <input type="text" #firstName="ngModel" name="firstName" id="firstName" class="form-control" required="required" [(ngModel)]="serviceRequest.firstName">
+        <div class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched" > First Name is required </div>
+      </div>
+      <div class="from-group" [class.has-error]="lastName.invalid && lastName.touched">
+        <label class="control-label" for="lastName">Last Name</label>
+        <input type="text" #lastName="ngModel" name="lastName" required id="lastName" class="form-control" [(ngModel)]="serviceRequest.lastName">
+        <div class="alert-danger" *ngIf="lastName.invalid && lastName.touched" >Last Name is required</div>
+      </div>
+      <div class="from-group" [class.has-error]="vehicleRegNumber.invalid  && vehicleRegNumber.touched">
+        <label class="control-label" for="vehicleRegNumber">Vehicle Registration Number</label>
+        <input type="text" #vehicleRegNumber="ngModel" name="vehicleRegNumber" required id="vehicleRegNumber" class="form-control"
+          [(ngModel)]="serviceRequest.vehicleRegNumber">
+        <div class="alert-danger" *ngIf="vehicleRegNumber.invalid  && vehicleRegNumber.touched" >Vehicle Registration number is required</div>
+
+      </div>
+      <div class="from-group" [class.has-error]="mobileNumber.invalid && mobileNumber.touched">
+        <label class="control-label" for="mobileNumber">Mobile Number</label>
+        <input type="text" #mobileNumber="ngModel" name="mobileNumber" pattern=".........." required id="mobileNumber" class="form-control"
+          [(ngModel)]="serviceRequest.mobileNumber">
+        <div class="alert-danger" *ngIf="mobileNumber.invalid && mobileNumber.touched" >Mobile number is required. and should be 10 digits</div>
+
+      </div>
+      <div class="from-group" [class.has-error]="address.invalid  && address.touched">
+        <label class="control-label" for="address">Address</label>
+        <textarea name="address" #address="ngModel" id="address" required cols="30" rows="10" class="form-control" [(ngModel)]="serviceRequest.address"></textarea>
+        <div class="alert-danger" *ngIf="address.invalid  && address.touched">Address is required</div>
+
+      </div>
+      <div class="from-group" [class.has-error]="pickupDate.invalid&& pickupDate.touched">
+        <label class="control-label" for="pickupDate">Pickup Date</label>
+        <input type="date" #pickupDate="ngModel" name="pickupDate" required id="pickupDate" class="form-control" [(ngModel)]="serviceRequest.pickupDate">
+        <div class="alert-danger" *ngIf="pickupDate.invalid&& pickupDate.touched">Pickup Date is required</div>
+      </div>
+      <div class="from-group" [class.has-error]="returnDate.invalid && returnDate.touched">
+        <label class="control-label" for="returnDate">Return Date</label>
+        <input type="date" name="returnDate" required #returnDate="ngModel" id="returnDate" class="form-control" [(ngModel)]="serviceRequest.returnDate">
+        <div class="alert-danger" *ngIf="returnDate.invalid && returnDate.touched"> Return Date is required</div>
+      </div>
+      <input type="submit" [disabled]="requestAddForm.invalid" value="Submit Request" class="form-control btn btn-primary" />
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+<br/>
+<br/>

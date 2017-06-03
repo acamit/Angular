@@ -1,0 +1,34 @@
+<div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Service Requests</div>
+  <div class="panel-body">
+    <table class="table table-hover" *ngIf="serviceRequests.length>0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Full Name</th>
+          <th>Vehicle Registration Number</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of serviceRequests">
+          <td>{{request.requestId}}</td>
+          <td>{{request.firstName + " " + request.lastName}} </td>
+          <td>{{request.vehicleRegNumber}}</td>
+
+          <td><a class="btn btn-primary" [routerLink]="['/request', request.requestId]">View</a></td>
+          <td><a class="btn btn-primary" (click)="deleteRequest(request.requestId)">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="norecords" *ngIf="!(serviceRequests.length>0)">
+      No Pending Requests
+    </div>
+  </div>
+  <div class="panel-footer">
+    <a class="btn btn-primary" (click)="undoLastAction()"> Undo </a>
+    <a class="btn btn-primary" [routerLink]="['/request/add']"> Add New Request </a>
+  </div>
+</div>
