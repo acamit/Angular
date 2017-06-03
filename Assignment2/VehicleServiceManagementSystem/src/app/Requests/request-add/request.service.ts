@@ -13,7 +13,7 @@ export class RequestAddService{
         }
         else{
             var keys = Object.keys(req);
-            var res = keys.filter(key=> req.key.vehicleRegNumber==request.vehicleRegNumber);
+            var res = keys.filter(key=> req[key].vehicleRegNumber==request.vehicleRegNumber);
             if(res.length>0){
                 //cannot add. Duplicate Entry   
                localStorage.setItem("error", "duplicate Entry");
