@@ -9,8 +9,6 @@ import { RequestAddService } from "./request.service";
 })
 export class RequestAddComponent{
     serviceRequest:IRequest = new IRequest();
-    requestId:string;
-    static incr :number = 0;
     constructor(private _postRequest : RequestAddService, private _router:Router){
     }
     

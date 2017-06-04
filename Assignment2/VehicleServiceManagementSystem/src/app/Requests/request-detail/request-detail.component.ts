@@ -10,7 +10,6 @@ export class RequestDetailComponent implements OnInit{
     serviceRequest :IRequest = new IRequest() ;
     requestId:string;
     constructor(private _route:ActivatedRoute){
-
     }
     ngOnInit():void{
         let id = this._route.snapshot.params['id'];
