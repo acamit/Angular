@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form class="form" #productAddForm="ngForm" name="productAddForm" (submit)="addNewProduct(productAddForm)">
+
+      <div class="form-group" [class.has-error]="pname.invalid && pname.touched">
+        <label class="control-label" for="pname">Name</label>
+        <input type="text" #pname="ngModel" name="pname" id="pname" class="form-control" required="required" [(ngModel)]="product.Name">
+        <div class="alert alert-danger" *ngIf="pname.invalid && pname.touched"> Name is required </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="type.invalid && type.touched">
+        <label class="control-label" for="type">Type</label>
+        <input type="text" #type="ngModel" name="type" required id="type" class="form-control" [(ngModel)]="product.Type">
+        <div class="alert-danger" *ngIf="type.invalid && type.touched">Type is required</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="cost.invalid  && cost.touched">
+        <label class="control-label" for="cost">Cost</label>
+        <input type="text" #cost="ngModel" name="cost" required id="cost" class="form-control" [(ngModel)]="product.Cost">
+        <div class="alert-danger" *ngIf="cost.invalid  && cost.touched">Cost is required</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="discount.invalid && discount.touched">
+        <label class="control-label" for="discount"> Discount </label>
+        <input type="text" #discount="ngModel" name="discount" id="discount" class="form-control" [(ngModel)]="product.Discount">
+        <div class="alert-danger" *ngIf="discount.invalid && discount.touched"></div>
+      </div>
+
+      <div class="form-group" [class.has-error]="inOfferList.invalid  && inOfferList.touched">
+        <div class="checkbox">
+          <label for="inOfferList">
+            <input type="checkbox" #inOfferList="ngModel" name="inOfferList" id="inOfferList" [(ngModel)]="product.InOffersList" value = "1" [checked]="product.InOffersList" >
+            Include In Offers List
+        </label>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="OutOfStock.invalid  && OutOfStock.touched" *ngIf="!buttonAction">
+        <div class="checkbox">
+          <label for="OutOfStock">
+            <input type="checkbox" #OutOfStock="ngModel" name="OutOfStock" id="OutOfStock" [(ngModel)]="product.OutOfStock" value =1 [checked]="product.OutOfStock" >
+            Out Of Stock
+        </label>
+        </div>
+      </div>
+      <div class="row">
+        <a class="btn btn-primary col-md-4" *ngIf="!buttonAction" (click)="CancelUpdate(productAddForm)">Cancel</a>
+        <div class="col-md-4">
+          <input type="submit" [disabled]="productAddForm.invalid" value="{{buttonText}}" class="form-control btn btn-primary" />
+        </div>
+        <a class="btn btn-primary col-md-4" *ngIf="!buttonAction" (click)="DeleteProduct(product.Id)">Delete</a>
+      </div>
+
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+<br/>
+<br/>

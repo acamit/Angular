@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form class="form" #customerAddForm="ngForm" name="customerAddForm" (submit)="addNewcustomer(customerAddForm)">
+
+      <div class="form-group" [class.has-error]="custName.invalid && custName.touched">
+        <label class="control-label" for="custName">Name</label>
+        <input  type="text" #custName="ngModel" name="custName" id="custName" class="form-control" required="required" [(ngModel)]="customer.custName">
+        <div class="alert alert-danger" *ngIf="custName.invalid && custName.touched"> First Name is required </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="age.invalid && age.touched">
+        <label class="control-label" for="age">Age</label>
+        <input  type="text" #age="ngModel" name="age" required id="age" class="form-control" [(ngModel)]="customer.age">
+        <div class="alert-danger" *ngIf="age.invalid && age.touched">Age is required</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="description.invalid  && description.touched">
+        <label class="control-label" for="description">Description</label>
+        <input type="text" #description="ngModel" name="description" required id="description" class="form-control"    [(ngModel)]="customer.description">
+        <div class="alert-danger" *ngIf="description.invalid  && description.touched">Description is required</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="mobileNumber.invalid && mobileNumber.touched">
+        <label class="control-label" for="mobileNumber">Mobile Number</label>
+        <input type="text" #mobileNumber="ngModel" name="mobileNumber" pattern=".........." required id="mobileNumber" class="form-control"
+          [(ngModel)]="customer.mobileNumber">
+        <div class="alert-danger" *ngIf="mobileNumber.invalid && mobileNumber.touched">Mobile number is required. and should be 10 digits</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="address.invalid  && address.touched">
+        <label class="control-label" for="address">Address</label>
+        <input type="text" name="address" #address="ngModel" id="address" required class="form-control" [(ngModel)]="customer.address" />
+        <div class="alert-danger" *ngIf="address.invalid  && address.touched">Address is required</div>
+      </div>
+      
+      <div class="form-group" [class.has-error]="type.invalid  && type.touched">
+        <label for="">Customer Type</label>
+        <div class="radio"   >
+          <label for="typeCorportate">
+            <input type="radio" #type="ngModel" id="typeCorportate" required name="type" value="corporate" checked [(ngModel)]="customer.type">Corporate
+        </label>
+        </div>
+        <div class="radio">
+          <label for="typeRegular">
+            <input type="radio" #type="ngModel" id="typeRegular" required name="type" value="regular" [(ngModel)]="customer.type">Regular
+        </label>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="loyalProgramSubscribed.invalid  && loyalProgramSubscribed.touched">
+        <div class="checkbox"   >
+          <label for="loyalProgramSubscribed">
+            <input type="checkbox" #loyalProgramSubscribed="ngModel" name="loyalProgramSubscribed" [(ngModel)]="customer.loyalProgramSubscribed" value="true">Loyalty Program Subscribed
+        </label>
+        </div>
+      </div>
+      
+      <div class="form-group" [class.has-error]="pickupDate.invalid&& pickupDate.touched">
+        <label class="control-label" for="pickupDate">Pickup Date</label>
+        <input    type="date" #pickupDate="ngModel" name="pickupDate" required id="pickupDate" class="form-control" [(ngModel)]="customer.pickupDate">
+        <div  class="alert-danger" *ngIf="pickupDate.invalid&& pickupDate.touched">Pickup Date is required</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="charges.invalid  && charges.touched">
+        <label class="control-label" for="charges">Charges(per/km)</label>
+        <input    type="text" #charges="ngModel" name="charges" required id="charges" class="form-control" [(ngModel)]="customer.charges">
+        <div class="alert-danger" *ngIf="charges.invalid  && charges.touched">Charges is required</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="numberOfEmployees.invalid  && numberOfEmployees.touched">
+        <label class="control-label" for="numberOfEmployees">Number of Employees</label>
+        <input    type="text"  #numberOfEmployees="ngModel" name="numberOfEmployees" [required]="customer.type=='corporate'" [disabled]="customer.type=='regular'"  id="numberOfEmployees" class="form-control"
+          [(ngModel)]="customer.numberOfEmployees">
+        <div class="alert-danger" *ngIf="numberOfEmployees.invalid  && numberOfEmployees.touched">Number of Employees is required</div>
+      </div>
+
+      <div class="form-group" [class.has-error]="distanceTravelled.invalid  && distanceTravelled.touched">
+        <label class="control-label" for="distanceTravelled">Distance Travelled</label>
+        <input    type="text" #distanceTravelled="ngModel" name="distanceTravelled" id="distanceTravelled" class="form-control"
+          [(ngModel)]="customer.distanceTravelled">
+        <div class="alert-danger" *ngIf="distanceTravelled.invalid  && distanceTravelled.touched">Distance Travelled is required</div>
+      </div>
+
+      <input type="submit" [disabled]="customerAddForm.invalid" value="{{buttonText}}" class="form-control btn btn-primary" />
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+<br/>
+<br/>

@@ -1,0 +1,2 @@
+use env file for urls
+add images to products

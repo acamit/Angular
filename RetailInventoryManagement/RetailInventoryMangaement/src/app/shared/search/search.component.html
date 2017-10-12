@@ -1,0 +1,27 @@
+<div class="panel">
+  <div class="panel-body">
+    <div class="form-inline">
+      <div class="form-group">
+        <label class="sr-only" for="searchTextBox">Search Text</label>
+        <div class="input-group">
+          <div class="input-group-addon"> 
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </div>
+          <input type="text" class="form-control" #searchTextBox="ngModel" name="searchTextBox" id="searchTextBox" placeholder="Search Text" [(ngModel)]="searchText">
+          <!--<input type="text" class="form-control" #searchTextBox="ngModel" name="searchTextBox" id="searchTextBox" (keyup)="searchProducts(searchTextBox.value)" placeholder="Search Text" [(ngModel)]="searchText">-->
+        </div>
+      </div>
+      <a  class="btn btn-primary" (click)="searchProducts(searchTextBox.value)">Search</a>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default" *ngIf="searchResults.length>0">
+  <div class="panel-heading">
+    Search Results
+  </div>
+  <div class="panel-body">
+    <div class="well product-well" *ngFor="let product of searchResults">
+      <app-product [productName]='product.Name' [cost]='product.Cost' [discount]='product.Discount' [id]="product.Id" [imgSrc]="product.ImageSrc" [buttonAction]="product.buttonAction" ></app-product>
+    </div>
+  </div>
+</div>

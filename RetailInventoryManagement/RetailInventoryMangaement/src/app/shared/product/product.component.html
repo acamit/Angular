@@ -1,0 +1,16 @@
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="{{imgSrc}}" alt="{{productName}}">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{productName}}</h4>
+    Cost:{{cost}}<br/>
+    <span *ngIf="discount>0"> Discount:{{discount}}</span>
+    <a class="pull-right btn btn-primary" (click)="addToCartClick(id)" *ngIf="buttonAction=='add'" >Add to cart</a>
+    <a class="pull-right btn btn-primary" (click)="removeFromCart(id)" *ngIf="buttonAction=='remove'" >Remove from cart</a>
+    <a class="pull-right btn btn-primary"  [routerLink]="['/admin/edit-product', id]"  *ngIf="buttonAction=='edit'">Edit Product</a>
+  </div>
+</div>
+ 

@@ -1,0 +1,8 @@
+.product-well{
+    background-color: #fff;
+}
+.panel-body.products{
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
